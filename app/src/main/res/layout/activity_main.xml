@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="edu.csulb.android.budget.MainActivity">
+
+
+    <TextView
+        android:id="@+id/Welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome"
+        tools:layout_editor_absoluteX="6dp"
+        tools:layout_editor_absoluteY="16dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="17dp" />
+
+    <TextView
+        android:id="@+id/prompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="@string/prompt"
+        android:layout_below="@+id/Welcome"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/eMonthly"
+        android:inputType="number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/prompt"
+        android:layout_marginTop="43dp" />
+
+    <EditText
+        android:id="@+id/eBills"
+        android:inputType="number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tBills"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:id="@+id/eGrocery"
+        android:inputType="number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tGrocery"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:id="@+id/eSaving"
+        android:inputType="number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tSaving"
+        android:layout_alignParentStart="true" />
+
+
+
+    <TextView
+        android:id="@+id/tIncome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/prompt"
+        android:layout_marginTop="23dp"
+        android:text="@string/income" />
+
+
+    <TextView
+        android:id="@+id/tBills"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/eMonthly"
+        android:layout_marginTop="24dp"
+        android:text="@string/bills" />
+
+    <TextView
+        android:id="@+id/tGrocery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="66dp"
+        android:text="@string/groceries"
+        android:layout_below="@+id/tBills"
+        android:layout_alignParentStart="true" />
+
+
+    <TextView
+        android:id="@+id/tSaving"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/eGrocery"
+        android:layout_marginTop="29dp"
+        android:text="@string/savings" />
+
+    <Button
+        android:id="@+id/bCalculate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/calculate"
+        android:onClick="onClick"
+        android:layout_below="@+id/eSaving"
+        android:layout_toEndOf="@+id/tBills" />
+
+    <TextView
+        android:id="@+id/tResults"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_below="@+id/bCalculate"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>

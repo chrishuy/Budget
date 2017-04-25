@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Budget</string>
+    <string name="welcome">Welcome to the budget app!</string>
+    <string name="prompt">Please enter your budget information</string>
+    <string name="income">Monthly Income</string>
+    <string name="bills">Rent and Bills</string>
+    <string name="groceries">Weekly Grocery Budget</string>
+    <string name="savings">Saving Percentage</string>
+    <string name="calculate">Calculate Weekly Budget</string>
+</resources>
