@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:minHeight="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:id="@+id/eSpent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/progressBar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:inputType="number"
+        android:textSize="15dp"
+        android:hint="@string/spend_input" />
+
+    <Button
+        android:id="@+id/bSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/eSpent"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="@string/submit"
+        android:onClick="onClick"/>
+
+    <TextView
+        android:id="@+id/tProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/progressBar"
+        android:layout_centerHorizontal="true"
+        android:textSize="30dp"
+        android:layout_above="@+id/eSpent" />
+
+    <TextView
+        android:id="@+id/tWeeklyBudget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tProgress"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="11dp"
+        android:textColor="@color/black"
+        android:text="@string/progress_message" />
+
+    <Button
+        android:id="@+id/bLocations"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/location"
+        android:layout_below="@+id/bSubmit"
+        android:onClick="onClick"
+        android:layout_alignStart="@+id/tWeeklyBudget" />
+
+    <Button
+        android:id="@+id/bSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/settings"
+        android:layout_below="@+id/bLocations"
+        android:onClick="onClick"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
