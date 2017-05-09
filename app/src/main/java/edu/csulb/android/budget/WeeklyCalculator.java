@@ -4,8 +4,7 @@ package edu.csulb.android.budget;
  * This class is used to calculate the weekly budget
  */
 public class WeeklyCalculator {
-    public static float weekBudget(float income, float bills, float grocery, float save)
-    {
+    public static float weekBudget(float income, float bills, float grocery, float save) {
         float result, savings, weekIncome;
 
         //Gives saving percentage

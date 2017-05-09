@@ -1,89 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.csulb.android.budget.MainActivity">
+    android:orientation="vertical"
+    tools:context=".MainActivity">
 
+    <!--<ListView-->
+        <!--android:id="@+id/listView"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="1" />-->
 
-    <TextView
-        android:id="@+id/Welcome"
-        android:layout_width="wrap_content"
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="vertical"-->
+        <!--android:layout_gravity="bottom">-->
+        <!--<EditText-->
+            <!--android:id="@+id/todoText"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"/>-->
+        <!--<Button-->
+            <!--android:id="@+id/addButton"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/add_item"/>-->
+    <!--</LinearLayout>-->
+    <Button
+        android:id="@+id/btnCalculation"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/welcome"
-        tools:layout_editor_absoluteX="6dp"
-        tools:layout_editor_absoluteY="16dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="17dp" />
-
-    <TextView
-        android:id="@+id/prompt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:text="@string/prompt"
-        android:layout_below="@+id/Welcome"
-        android:layout_centerHorizontal="true" />
-
-    <EditText
-        android:id="@+id/eMonthly"
-        android:inputType="number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/income"
-        android:layout_below="@+id/prompt"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="34dp" />
-
-    <EditText
-        android:id="@+id/eBills"
-        android:inputType="number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/bills"
-        android:layout_below="@+id/eMonthly"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="15dp" />
-
-    <EditText
-        android:id="@+id/eGrocery"
-        android:inputType="number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/groceries"
-        android:layout_below="@+id/eBills"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="19dp" />
-
-    <EditText
-        android:id="@+id/eSaving"
-        android:inputType="number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/savings"
-        android:layout_below="@+id/eGrocery"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="20dp" />
-
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:background="@drawable/button_bg"
+        android:textColor="#fff"
+        android:text="Calculate Weekly Budget"
+        android:onClick="onClickLaunchCalculation" />
 
     <Button
-        android:id="@+id/bCalculate"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnData"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/calculate"
-        android:onClick="onClick"
-        android:layout_marginBottom="35dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/prompt" />
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_bg"
+        android:textColor="#fff"
+        android:text="Data"
+        android:onClick="onClickLaunchCalculation" />
 
-    <TextView
-        android:id="@+id/tResults"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:layout_above="@+id/bCalculate"
-        android:layout_toEndOf="@+id/eGrocery"
-        android:layout_marginBottom="27dp" />
-</RelativeLayout>
+</LinearLayout>
