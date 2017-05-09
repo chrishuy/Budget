@@ -84,13 +84,4 @@ public class CalculationActivity extends Activity {
             return null;
         }
     }
-
-    private class BudgetDeleteTask extends AsyncTask<ContentValues, Void, Void> {
-        @Override
-        protected Void doInBackground(ContentValues... params) {
-            // Deleting all the locations stored in the database
-            getContentResolver().delete(DBContentProvider.CONTENT_URI, null, null);
-            return null;
-        }
-    }
 }

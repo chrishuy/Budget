@@ -1,7 +1,9 @@
 package edu.csulb.android.budget;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
@@ -13,6 +15,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class DataListingActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
@@ -23,14 +26,10 @@ public class DataListingActivity extends AppCompatActivity implements LoaderCall
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_listing);
         getSupportLoaderManager().initLoader(0, null, this);
-        items.add(new Item());
-        items.add(new Item());
-        items.add(new Item());
-        initList();
     }
 
     private void initList() {
-        ListAdapter adapter = new ListAdapter(this, items);
+        final ListAdapter adapter = new ListAdapter(this, items);
         ListView listView = (ListView)findViewById(R.id.lvData);
         listView.setAdapter(adapter);
 
@@ -40,6 +39,32 @@ public class DataListingActivity extends AppCompatActivity implements LoaderCall
                 Toast.makeText(DataListingActivity.this, "You clicked on row " + Integer.toString(position), Toast.LENGTH_SHORT).show();
             }
         });
+
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                adapter.remove(getItem(position));
+                adapter.notifyDataSetChanged();
+                BudgetDeleteTask deleteTask = new BudgetDeleteTask();
+                // Deleting all the rows from SQLite database table
+                deleteTask.execute(position);
+                return false;
+            }
+        });
+    }
+
+    public Item getItem(int position) {
+        return items.get(position);
+    }
+
+    private class BudgetDeleteTask extends AsyncTask<Integer, Void, Void> {
+        @Override
+        protected Void doInBackground(Integer... params) {
+            // Deleting all the locations stored in the database
+            String[] selectionArgs = new String[]{Integer.toString(params[0])};
+            getContentResolver().delete(DBContentProvider.CONTENT_URI, null, selectionArgs);
+            return null;
+        }
     }
 
     @Override
@@ -74,7 +99,9 @@ public class DataListingActivity extends AppCompatActivity implements LoaderCall
             items.add(new Item(income, saving, grocery, bill, budget, today));
             data.moveToNext();
         }
-//        initList();
+        // List all items in descending order
+        Collections.reverse(items);
+        initList();
     }
 
     @Override

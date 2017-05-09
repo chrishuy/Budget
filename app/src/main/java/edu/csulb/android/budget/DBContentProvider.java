@@ -60,7 +60,7 @@ public class DBContentProvider extends ContentProvider {
 
     @Override
     public int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[] selectionArgs) {
-        return dbHelper.deleteAllBudget();
+        return dbHelper.deleteBudget(selectionArgs);
     }
 
     @Override

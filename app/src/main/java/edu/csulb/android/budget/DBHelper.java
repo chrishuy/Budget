@@ -74,24 +74,6 @@ public class DBHelper extends SQLiteOpenHelper {
         return null;
     }
 
-    /**
-     * Delete a row from the database
-     */
-//    public int delete(Uri uri, String where, String[] whereArgs) {
-//        SQLiteDatabase db = dbHelper.getWritableDatabase();
-//        int count;
-//        switch(sUriMatcher.match(uri)) {
-//            case INCIDENTS:
-//                count = db.delete(TABLE_NAME, where, whereArgs);
-//                break;
-//            default:
-//                throw new IllegalArgumentException("Unknown URI " + uri);
-//        }
-//        getContext().getContentResolver().notifyChange(uri, null);
-//        db.close();
-//        return count;
-//    }
-
     // Inserting new label into labels table
     public long insertBudget(ContentValues values) {
         SQLiteDatabase db = this.getWritable();
@@ -99,14 +81,16 @@ public class DBHelper extends SQLiteOpenHelper {
         return db.insert(TABLE_NAME, null, values);
     }
 
-    // Delete all locations
-    public int deleteAllBudget() {
+    public int deleteBudget(String[] selectionArgs) {
         SQLiteDatabase db = this.getReadable();
         if (db == null) return 0;
-        return db.delete(TABLE_NAME, null , null);
+        if (selectionArgs == null) {
+            return db.delete(TABLE_NAME, null , null);
+        }
+        return db.delete(TABLE_NAME, "id=?" , selectionArgs);
     }
 
-    // Getting all locations
+    // Getting all budget
     public Cursor getAllBudget() {
         SQLiteDatabase db = this.getReadable();
         if (db == null) return null;
