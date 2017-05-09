@@ -2,36 +2,38 @@ package edu.csulb.android.budget;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class SettingsActivity extends AppCompatActivity {
+
     private EditText eIncome, eSavings, eGrocery, eBills;
     private TextView tBudget;
     SharedPreferences share;
-    private Intent existingUser;
+    private Intent resume;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.settings);
         share = getSharedPreferences("AppPref", MODE_PRIVATE);
         float verify = share.getFloat("budget_pref", -1000);
-        existingUser = new Intent(getApplicationContext(), BudgetProfile.class);
-        if(verify != -1000)
-        {
-            startActivity(existingUser);
-        }
+        resume = new Intent(getApplicationContext(), BudgetProfile.class);
 
         eIncome = (EditText) findViewById(R.id.eMonthly);
         eSavings = (EditText) findViewById(R.id.eSaving);
         eGrocery = (EditText) findViewById(R.id.eGrocery);
         eBills = (EditText) findViewById(R.id.eBills);
         tBudget = (TextView) findViewById(R.id.tResults);
+
+        eIncome.setText(Float.toString(share.getFloat("income_pref", -1000)));
+        eSavings.setText(Float.toString(share.getFloat("savings_pref", -1000)));
+        eGrocery.setText(Float.toString(share.getFloat("groceries_pref", -1000)));
+        eBills.setText(Float.toString(share.getFloat("bills_pref", -1000)));
     }
 
     //When user clicks button
@@ -39,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     {
         switch(view.getId())
         {
-            case R.id.bCalculate:
+            case R.id.bSave:
                 //Outputs a toast message if any fields are empty
                 if((eIncome.getText().length() == 0) || (eSavings.getText().length() == 0)
                         || (eGrocery.getText().length() == 0) || (eBills.getText().length() == 0))
@@ -64,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 editor.putFloat("remainder_pref", cBudget);
                 editor.commit();
 
-                startActivity(existingUser);
+                startActivity(resume);
         }
     }
 }

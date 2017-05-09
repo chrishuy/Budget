@@ -13,7 +13,7 @@ public class WeeklyCalculator {
 
         //Gives weekly income adjusted from bills and groceries and savings percentage
         weekIncome = income - bills;
-        weekIncome = weekIncome* (1-savings);
+        weekIncome = weekIncome* (1-savings) / 4;
 
         //Budget for each week
         result = weekIncome - grocery;

@@ -7,4 +7,13 @@
     <string name="groceries">Weekly Grocery Budget</string>
     <string name="savings">Saving Percentage</string>
     <string name="calculate">Calculate Weekly Budget</string>
+    <string name="submit">Submit</string>
+    <string name="spend_input">How much did you spend?</string>
+    <string name="progress_message">Here\'s your weekly budget</string>
+    <string name="settings">Update Expenses</string>
+    <string name="location">Set Home Location</string>
+    <string name="settings_title">Settings</string>
+    <string name="save">Save Changes</string>
+    <string name="addressPrompt">Please enter your address</string>
+    <string name="locations_button">Find Location</string>
 </resources>
