@@ -66,6 +66,11 @@ public class BudgetProfile extends AppCompatActivity {
                 startActivity(reset);
                 Log.d("Settings", "Settings button pressed");
                 break;
+            case R.id.bLocations:
+                Intent locator = new Intent(getApplicationContext(), Locations.class);
+                startActivity(locator);
+                Log.d("Locations", "Locations button pressed");
+                break;
         }
     }
 }
