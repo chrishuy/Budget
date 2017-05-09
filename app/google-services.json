@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "793183524981",
+    "firebase_url": "https://budget-afca5.firebaseio.com",
+    "project_id": "budget-afca5",
+    "storage_bucket": "budget-afca5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:793183524981:android:0af5d3bf479e1812",
+        "android_client_info": {
+          "package_name": "edu.csulb.android.budget"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "793183524981-37fh34dejab4i2f0ub7ohovb0vpn4h4g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAERs2_p2Tww7q5pADuvoY9lJqcJeBAG-8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
