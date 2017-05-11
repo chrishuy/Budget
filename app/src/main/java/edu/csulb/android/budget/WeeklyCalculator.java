@@ -16,6 +16,6 @@ public class WeeklyCalculator {
 
         //Budget for each week
         result = weekIncome - grocery;
-        return result;
+        return (float)(Math.round(result * 100.0) / 100.0);
     }
 }

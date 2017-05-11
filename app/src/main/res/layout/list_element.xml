@@ -5,64 +5,35 @@
     android:layout_height="match_parent" >
 
     <TextView
-        android:id="@+id/txtDate"
+        android:id="@+id/tvDate"
         android:layout_height="wrap_content"
         android:layout_width="0dp"
         android:layout_weight="1"
+        android:textSize="15sp"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/txtIncome"
+        android:id="@+id/tvBudget"
         android:layout_height="wrap_content"
         android:gravity="end"
         android:layout_width="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:textSize="15sp" />
 
     <TextView
-        android:id="@+id/txtSaving"
+        android:id="@+id/tvExpense"
         android:layout_height="wrap_content"
         android:gravity="end"
         android:layout_width="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:textSize="15sp"/>
 
     <TextView
-        android:id="@+id/txtGrocery"
+        android:id="@+id/tvRemainder"
         android:layout_height="wrap_content"
         android:gravity="end"
         android:layout_width="0dp"
-        android:layout_weight="1" />
-
-    <TextView
-        android:id="@+id/txtBill"
-        android:layout_height="wrap_content"
-        android:gravity="end"
-        android:layout_width="0dp"
-        android:layout_weight="1" />
-
-    <TextView
-        android:id="@+id/txtBudget"
-        android:layout_height="wrap_content"
-        android:gravity="end"
-        android:layout_width="0dp"
-        android:layout_weight="1" />
-
-    <!--<TextView-->
-        <!--android:id="@+id/age"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_width="0dp"-->
-        <!--android:layout_weight="0.5" />-->
-
-    <!--<TextView-->
-        <!--android:id="@+id/status"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_width="0dp"-->
-        <!--android:layout_weight="1" />-->
-    <!--<TextView-->
-        <!--android:id="@+id/txtName"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:textSize="20sp"-->
-        <!--android:paddingTop="5dp"-->
-        <!--android:paddingLeft="5dp" />-->
+        android:layout_weight="1"
+        android:textSize="15sp"/>
 
 </LinearLayout>

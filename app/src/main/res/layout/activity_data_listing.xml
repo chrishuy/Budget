@@ -1,10 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".DataListingActivity">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp" >
+
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="Date" />
+
+        <TextView
+            android:id="@+id/tvBudget"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="Budget" />
+
+        <TextView
+            android:id="@+id/tvExpense"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="Expense" />
+
+        <TextView
+            android:id="@+id/tvRemainder"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="Remainder" />
+
+    </LinearLayout>
 
     <ListView
         android:id="@+id/lvData"
@@ -13,4 +66,4 @@
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp" />
 
-</RelativeLayout>
+</LinearLayout>

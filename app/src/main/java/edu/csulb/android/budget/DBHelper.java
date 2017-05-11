@@ -22,6 +22,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String CN_GROCERY = "grocery";
     public static final String CN_BILL = "bill";
     public static final String CN_BUDGET = "budget";
+    public static final String CN_REMAINDER = "remainder";
     public static final String CN_TODAY = "createDate";
 
     public DBHelper (Context context) {
@@ -38,6 +39,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 + CN_GROCERY + " FLOAT, "
                 + CN_BILL + " FLOAT, "
                 + CN_BUDGET + " FLOAT, "
+                + CN_REMAINDER + " FLOAT, "
                 + CN_TODAY + " VARCHAR(45))";
         db.execSQL(sql);
     }
@@ -82,7 +84,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public int deleteBudget(String[] selectionArgs) {
-        SQLiteDatabase db = this.getReadable();
+        SQLiteDatabase db = this.getWritable();
         if (db == null) return 0;
         if (selectionArgs == null) {
             return db.delete(TABLE_NAME, null , null);
@@ -90,10 +92,16 @@ public class DBHelper extends SQLiteOpenHelper {
         return db.delete(TABLE_NAME, "id=?" , selectionArgs);
     }
 
+    public int updateBudget(ContentValues values, String[] selectionArgs) {
+        SQLiteDatabase db = this.getWritable();
+        if (db == null) return 0;
+        return db.update(TABLE_NAME, values, "id=?", selectionArgs);
+    }
+
     // Getting all budget
     public Cursor getAllBudget() {
         SQLiteDatabase db = this.getReadable();
         if (db == null) return null;
-        return db.query(TABLE_NAME, new String[] {CN_ID, CN_INCOME, CN_SAVING, CN_GROCERY, CN_BILL, CN_BUDGET, CN_TODAY}, null, null, null, null, null);
+        return db.query(TABLE_NAME, new String[] {CN_ID, CN_INCOME, CN_SAVING, CN_GROCERY, CN_BILL, CN_BUDGET, CN_REMAINDER, CN_TODAY}, null, null, null, null, null);
     }
 }

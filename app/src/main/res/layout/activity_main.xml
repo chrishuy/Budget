@@ -7,49 +7,15 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <!--<ListView-->
-        <!--android:id="@+id/listView"-->
-        <!--android:layout_width="0dp"-->
-        <!--android:layout_height="0dp"-->
-        <!--android:layout_weight="1" />-->
-
-    <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:orientation="vertical"-->
-        <!--android:layout_gravity="bottom">-->
-        <!--<EditText-->
-            <!--android:id="@+id/todoText"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"/>-->
-        <!--<Button-->
-            <!--android:id="@+id/addButton"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="@string/add_item"/>-->
-    <!--</LinearLayout>-->
-    <Button
-        android:id="@+id/btnCalculation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:background="@drawable/button_bg"
-        android:textColor="#fff"
-        android:text="Calculate Weekly Budget"
-        android:onClick="onClickLaunchCalculation" />
-
-    <Button
-        android:id="@+id/btnData"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/button_bg"
-        android:textColor="#fff"
-        android:text="Data"
-        android:onClick="onClickLaunchCalculation" />
+    <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/grid_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:numColumns="2"
+        android:columnWidth="90dp"
+        android:horizontalSpacing="10dp"
+        android:verticalSpacing="10dp"
+        android:gravity="center"
+        android:stretchMode="columnWidth" />
 
 </LinearLayout>

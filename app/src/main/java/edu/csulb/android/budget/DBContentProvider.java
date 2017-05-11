@@ -7,6 +7,8 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
+import android.widget.Toast;
 
 /**
  * Created by kyo on 5/5/17.
@@ -60,12 +62,24 @@ public class DBContentProvider extends ContentProvider {
 
     @Override
     public int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[] selectionArgs) {
+        switch (uriMatcher.match(uri)) {
+            case BUDGET:
+                break;
+            default:
+                throw new IllegalArgumentException("Unsupported URI: " + uri);
+        }
         return dbHelper.deleteBudget(selectionArgs);
     }
 
     @Override
     public int update(@NonNull Uri uri, @Nullable ContentValues values, @Nullable String selection, @Nullable String[] selectionArgs) {
-        return 0;
+        switch (uriMatcher.match(uri)) {
+            case BUDGET:
+                break;
+            default:
+                throw new IllegalArgumentException("Unsupported URI: " + uri);
+        }
+        return dbHelper.updateBudget(values, selectionArgs);
     }
 
     @Nullable

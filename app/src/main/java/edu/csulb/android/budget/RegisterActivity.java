@@ -45,24 +45,13 @@ import static android.Manifest.permission.READ_CONTACTS;
 /**
  * A login screen that offers login via email/password.
  */
-public class RegisterActivity extends Activity {
-
-    protected EditText passwordEditText;
-    protected EditText emailEditText;
-    protected Button signUpButton;
+public class RegisterActivity extends AppCompatActivity {
+    private EditText emailEditText;
+    private EditText passwordEditText;
+    private EditText rePasswordEditText;
+    private Button registerButton;
     private FirebaseAuth mFirebaseAuth;
 
-    private static final int REQUEST_READ_CONTACTS = 0;
-
-    private static final String[] DUMMY_CREDENTIALS = new String[]{
-            "foo@example.com:hello", "bar@example.com:world"
-    };
-
-    // UI references.
-    private AutoCompleteTextView mEmailView;
-    private EditText mPasswordView;
-    private View mProgressView;
-    private View mLoginFormView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,22 +60,32 @@ public class RegisterActivity extends Activity {
         // Initialize FirebaseAuth
         mFirebaseAuth = FirebaseAuth.getInstance();
 
-        passwordEditText = (EditText)findViewById(R.id.passwordField);
-        emailEditText = (EditText)findViewById(R.id.emailField);
-        signUpButton = (Button)findViewById(R.id.signupButton);
+        emailEditText = (EditText)findViewById(R.id.edtEmail);
+        passwordEditText = (EditText)findViewById(R.id.edtPassword);
+        rePasswordEditText = (EditText)findViewById(R.id.edtRePassword);
+        registerButton = (Button)findViewById(R.id.btnRegister);
 
-        signUpButton.setOnClickListener(new View.OnClickListener() {
+        registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String password = passwordEditText.getText().toString();
                 String email = emailEditText.getText().toString();
+                String password = passwordEditText.getText().toString();
+                String rePassword = rePasswordEditText.getText().toString();
 
-                password = password.trim();
                 email = email.trim();
+                password = password.trim();
+                rePassword = rePassword.trim();
 
-                if (password.isEmpty() || email.isEmpty()) {
+                if (password.isEmpty() || email.isEmpty() || rePassword.isEmpty()) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
                     builder.setMessage(R.string.signup_error_message)
+                            .setTitle(R.string.signup_error_title)
+                            .setPositiveButton(android.R.string.ok, null);
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                } else if (!password.equals(rePassword)) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                    builder.setMessage(R.string.signup_error_password_message)
                             .setTitle(R.string.signup_error_title)
                             .setPositiveButton(android.R.string.ok, null);
                     AlertDialog dialog = builder.create();

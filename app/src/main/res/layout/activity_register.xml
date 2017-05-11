@@ -11,7 +11,7 @@
     tools:context=".RegisterActivity">
 
     <EditText
-        android:id="@+id/emailField"
+        android:id="@+id/edtEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -19,26 +19,38 @@
         android:ems="10"
         android:inputType="textEmailAddress"
         android:hint="@string/email_hint" >
-
         <requestFocus />
     </EditText>
 
     <EditText
-        android:id="@+id/passwordField"
+        android:id="@+id/edtPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/emailField"
-        android:layout_below="@+id/emailField"
+        android:layout_alignLeft="@+id/edtEmail"
+        android:layout_below="@+id/edtEmail"
         android:ems="10"
         android:inputType="textPassword"
         android:hint="@string/password_hint" />
 
-    <Button
-        android:id="@+id/signupButton"
+    <EditText
+        android:id="@+id/edtRePassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/passwordField"
-        android:layout_below="@+id/passwordField"
-        android:text="@string/sign_up_button_label" />
+        android:layout_alignLeft="@+id/edtPassword"
+        android:layout_below="@+id/edtPassword"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:hint="@string/repassword_hint" />
+
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/edtRePassword"
+        android:layout_below="@+id/edtRePassword"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_bg"
+        android:textColor="#fff"
+        android:text="@string/signup_button_label" />
 
 </RelativeLayout>

@@ -1,6 +1,7 @@
 package edu.csulb.android.budget;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import java.util.List;
 public class ListAdapter extends ArrayAdapter<Item> {
     private final Activity context;
     private List<Item> items;
+    private int[] colors = new int[] { Color.parseColor("#F0F0F0"), Color.parseColor("#D2E4FC") };
 
     public ListAdapter(Activity context, List<Item> items) {
         super(context, R.layout.list_element, items);
@@ -25,24 +27,41 @@ public class ListAdapter extends ArrayAdapter<Item> {
     }
 
     @Override
-    public View getView(int position, View view, ViewGroup parent) {
-        LayoutInflater inflater = context.getLayoutInflater();
-        View rowView = inflater.inflate(R.layout.list_element, null, true);
-
+    public View getView(int position, View convertView, ViewGroup parent) {
+        ViewHolder viewHolder;
+        if (convertView == null) {
+            // inflate the GridView item layout
+            LayoutInflater inflater = LayoutInflater.from(context);
+            convertView = inflater.inflate(R.layout.list_element, parent, false);
+            // initialize the view holder
+            viewHolder = new ViewHolder();
+            viewHolder.tvDate = (TextView)convertView.findViewById(R.id.tvDate);
+            viewHolder.tvExpense = (TextView)convertView.findViewById(R.id.tvExpense);
+            viewHolder.tvBudget = (TextView)convertView.findViewById(R.id.tvBudget);
+            viewHolder.tvRemainder = (TextView)convertView.findViewById(R.id.tvRemainder);
+            convertView.setBackgroundColor(position % 2 == 0 ? colors[0] : colors[1]);
+            convertView.setTag(viewHolder);
+        } else {
+            // Recycle the already inflated view
+            viewHolder = (ViewHolder)convertView.getTag();
+        }
+        // Update the item view
         DecimalFormat df = new DecimalFormat("###.##");
-        TextView txtDate = (TextView) rowView.findViewById(R.id.txtDate);
-        txtDate.setText(items.get(position).getToday());
-        TextView txtIncome = (TextView) rowView.findViewById(R.id.txtIncome);
-        txtIncome.setText(df.format(items.get(position).getIncome()));
-        TextView txtSaving = (TextView) rowView.findViewById(R.id.txtSaving);
-        txtSaving.setText(df.format(items.get(position).getSaving()));
-        TextView txtGrocery = (TextView) rowView.findViewById(R.id.txtGrocery);
-        txtGrocery.setText(df.format(items.get(position).getGrocery()));
-        TextView txtBill = (TextView) rowView.findViewById(R.id.txtBill);
-        txtBill.setText(df.format(items.get(position).getBill()));
-        TextView txtBudget = (TextView) rowView.findViewById(R.id.txtBudget);
-        txtBudget.setText(df.format(items.get(position).getBudget()));
-        return rowView;
+        viewHolder.tvDate.setText(items.get(position).getToday());
+        float remainder = items.get(position).getRemainder();
+        float budget = items.get(position).getBudget();
+        float spent = budget - items.get(position).getRemainder();
+        viewHolder.tvExpense.setText(df.format(spent));
+        viewHolder.tvBudget.setText(df.format(budget));
+        viewHolder.tvRemainder.setText(df.format(remainder));
+        return convertView;
+    }
+
+    private static class ViewHolder {
+        TextView tvDate;
+        TextView tvExpense;
+        TextView tvRemainder;
+        TextView tvBudget;
     }
 }
 

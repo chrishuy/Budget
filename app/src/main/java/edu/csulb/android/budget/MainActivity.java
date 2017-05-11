@@ -1,13 +1,16 @@
 package edu.csulb.android.budget;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.GridView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,22 +30,33 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
     private String mUserId;
 
+    int[] images = {
+            R.drawable.icn_expense,
+            R.drawable.icn_calculator,
+            R.drawable.icn_statistic,
+            R.drawable.icn_about
+    };
+    String[] titles = {
+            "Expense",
+            "Budget",
+            "Statistic",
+            "About"
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
         // Initialize Firebase Auth
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        Button btnCalculation = (Button)findViewById(R.id.btnCalculation);
-        btnCalculation.setShadowLayer(4,0,0, Color.BLACK);
-        Button btnData = (Button)findViewById(R.id.btnData);
-        btnData.setShadowLayer(4,0,0, Color.BLACK);
+//        Button btnCalculation = (Button)findViewById(R.id.btnCalculation);
+//        btnCalculation.setShadowLayer(4,0,0, Color.BLACK);
+//        Button btnData = (Button)findViewById(R.id.btnData);
+//        btnData.setShadowLayer(4,0,0, Color.BLACK);
 
         if (mFirebaseUser == null) {
             // Not logged in, launch the Log In activity
@@ -92,6 +106,31 @@ public class MainActivity extends AppCompatActivity {
 //
 //                }
 //            });
+
+            GridAdapter adapter = new GridAdapter(MainActivity.this, titles, images);
+            GridView grid = (GridView)findViewById(R.id.grid_view);
+            grid.setAdapter(adapter);
+            grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    switch (position) {
+                        case 0:
+                            Intent intentProfile = new Intent(MainActivity.this, BudgetProfile.class);
+                            startActivity(intentProfile);
+                            break;
+                        case 1:
+                            Intent intentCalculation = new Intent(MainActivity.this, CalculationActivity.class);
+                            startActivity(intentCalculation);
+                            break;
+                        case 2:
+                            Intent intentData = new Intent(MainActivity.this, DataListingActivity.class);
+                            startActivity(intentData);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            });
         }
     }
 
@@ -117,22 +156,5 @@ public class MainActivity extends AppCompatActivity {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
-    }
-
-    //When user clicks button
-    public void onClickLaunchCalculation(View view) {
-        switch (view.getId()) {
-            case R.id.btnCalculation:
-                Intent intentCalculation = new Intent(this, CalculationActivity.class);
-                startActivity(intentCalculation);
-                break;
-            case R.id.btnData:
-//                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm");
-//                String test = dateFormat.format(new Date());
-//                Toast.makeText(MainActivity.this, test, Toast.LENGTH_LONG).show();
-                Intent intentData = new Intent(this, DataListingActivity.class);
-                startActivity(intentData);
-                break;
-        }
     }
 }
