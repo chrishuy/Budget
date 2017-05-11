@@ -64,7 +64,7 @@ public class DataListingActivity extends AppCompatActivity implements LoaderCall
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         // Uri to the content provider
-        Uri uri = DBContentProvider.CONTENT_URI;
+        Uri uri = DBContentProvider.CONTENT_URI_BUDGET;
         // Fetches all the entries from database
         return new CursorLoader(this, uri, null, null, null, null);
     }
@@ -106,7 +106,7 @@ public class DataListingActivity extends AppCompatActivity implements LoaderCall
         protected Void doInBackground(Integer... params) {
             // Deleting all the budget row stored in the database
             String[] selectionArgs = new String[]{Integer.toString(params[0])};
-            getContentResolver().delete(DBContentProvider.CONTENT_URI, null, selectionArgs);
+            getContentResolver().delete(DBContentProvider.CONTENT_URI_BUDGET, null, selectionArgs);
             return null;
         }
     }

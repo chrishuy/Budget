@@ -18,7 +18,9 @@
     <string name="addressPrompt">Please enter your address</string>
     <string name="locations_button">Find Location</string>
 
-
+    <string name="title_activity_statistic">Statistc</string>
+    <string name="title_activity_expense">Expense</string>
+    <string name="title_activity_report">Report</string>
     <!-- Strings related to login -->
     <string name="title_activity_login">Log In</string>
     <string name="prompt_email">Email</string>

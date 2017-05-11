@@ -75,7 +75,7 @@ public class BudgetProfile extends AppCompatActivity implements LoaderCallbacks<
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        Uri uri = DBContentProvider.CONTENT_URI;
+        Uri uri = DBContentProvider.CONTENT_URI_BUDGET;
         // Fetches all the entries from database
         return new CursorLoader(this, uri, null, null, null, null);
     }
@@ -108,7 +108,7 @@ public class BudgetProfile extends AppCompatActivity implements LoaderCallbacks<
         protected Void doInBackground(ContentValues... params) {
             // Setting up values of the clicked location to insert into the database
             String[] selectionArgs = new String[]{Integer.toString(index)};
-            getContentResolver().update(DBContentProvider.CONTENT_URI, params[0], null, selectionArgs);
+            getContentResolver().update(DBContentProvider.CONTENT_URI_BUDGET, params[0], null, selectionArgs);
             return null;
         }
     }

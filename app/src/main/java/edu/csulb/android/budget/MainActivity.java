@@ -33,14 +33,14 @@ public class MainActivity extends AppCompatActivity {
     int[] images = {
             R.drawable.icn_expense,
             R.drawable.icn_calculator,
-            R.drawable.icn_statistic,
-            R.drawable.icn_about
+            R.drawable.icn_report,
+            R.drawable.icn_statistic
     };
     String[] titles = {
             "Expense",
             "Budget",
-            "Statistic",
-            "About"
+            "Report",
+            "Statistic"
     };
 
     @Override
@@ -125,6 +125,10 @@ public class MainActivity extends AppCompatActivity {
                         case 2:
                             Intent intentData = new Intent(MainActivity.this, DataListingActivity.class);
                             startActivity(intentData);
+                            break;
+                        case 3:
+                            Intent intentStat = new Intent(MainActivity.this, StatisticActivity.class);
+                            startActivity(intentStat);
                             break;
                         default:
                             break;

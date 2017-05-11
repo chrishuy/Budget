@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.csulb.android.budget">
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
@@ -24,18 +25,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".BudgetProfile" />
-        <activity android:name=".SettingsActivity"/>
-        <activity android:name=".Locations"/>
+        <activity
+            android:name=".BudgetProfile"
+            android:label="@string/title_activity_expense"/>
+        <activity android:name=".SettingsActivity" />
+        <activity android:name=".Locations" />
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
         <activity
             android:name=".RegisterActivity"
             android:label="@string/title_activity_register" />
-        <activity android:name=".CalculationActivity" />
-        <activity android:name=".DataListingActivity" />
+        <activity
+            android:name=".CalculationActivity" />
+        <activity
+            android:name=".DataListingActivity"
+            android:label="@string/title_activity_report"/>
+        <activity
+            android:name=".StatisticActivity"
+            android:label="@string/title_activity_statistic" />
+
         <provider
             android:name=".DBContentProvider"
             android:authorities="edu.csulb.android.budget.contentprovider" />

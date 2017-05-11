@@ -76,7 +76,7 @@ public class CalculationActivity extends Activity {
         @Override
         protected Void doInBackground(ContentValues... params) {
             // Setting up values of the clicked location to insert into the database
-            getContentResolver().insert(DBContentProvider.CONTENT_URI, params[0]);
+            getContentResolver().insert(DBContentProvider.CONTENT_URI_BUDGET, params[0]);
             return null;
         }
     }
