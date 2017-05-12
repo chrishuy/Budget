@@ -12,18 +12,18 @@ import java.text.DecimalFormat;
 import java.util.List;
 
 /**
- * Created by kyo on 5/5/17.
+ * Created by kyo on 5/12/17.
  */
 
-public class ListAdapter extends ArrayAdapter<Item> {
+public class ExpenseListAdapter extends ArrayAdapter<Expense> {
     private final Activity context;
-    private List<Item> items;
+    private List<Expense> expenses;
     private int[] colors = new int[] { Color.parseColor("#F0F0F0"), Color.parseColor("#D2E4FC") };
 
-    public ListAdapter(Activity context, List<Item> items) {
-        super(context, R.layout.list_element, items);
+    public ExpenseListAdapter(Activity context, List<Expense> expenses) {
+        super(context, R.layout.list_expense_element, expenses);
         this.context = context;
-        this.items = items;
+        this.expenses = expenses;
     }
 
     @Override
@@ -32,13 +32,12 @@ public class ListAdapter extends ArrayAdapter<Item> {
         if (convertView == null) {
             // inflate the GridView item layout
             LayoutInflater inflater = LayoutInflater.from(context);
-            convertView = inflater.inflate(R.layout.list_element, parent, false);
+            convertView = inflater.inflate(R.layout.list_expense_element, parent, false);
             // initialize the view holder
             viewHolder = new ViewHolder();
             viewHolder.tvDate = (TextView)convertView.findViewById(R.id.tvDate);
-            viewHolder.tvExpense = (TextView)convertView.findViewById(R.id.tvExpense);
-            viewHolder.tvBudget = (TextView)convertView.findViewById(R.id.tvBudget);
-            viewHolder.tvRemainder = (TextView)convertView.findViewById(R.id.tvRemainder);
+            viewHolder.tvSpent = (TextView)convertView.findViewById(R.id.tvSpent);
+            viewHolder.tvItem = (TextView)convertView.findViewById(R.id.tvItem);
             convertView.setBackgroundColor(position % 2 == 0 ? colors[0] : colors[1]);
             convertView.setTag(viewHolder);
         } else {
@@ -47,21 +46,17 @@ public class ListAdapter extends ArrayAdapter<Item> {
         }
         // Update the item view
         DecimalFormat df = new DecimalFormat("###.##");
-        viewHolder.tvDate.setText(items.get(position).getToday());
-        float remainder = items.get(position).getRemainder();
-        float budget = items.get(position).getBudget();
-        float spent = budget - items.get(position).getRemainder();
-        viewHolder.tvExpense.setText(df.format(spent));
-        viewHolder.tvBudget.setText(df.format(budget));
-        viewHolder.tvRemainder.setText(df.format(remainder));
+        viewHolder.tvDate.setText(expenses.get(position).getToday());
+        float spent = expenses.get(position).getSpent();
+        String item = expenses.get(position).getItem();
+        viewHolder.tvSpent.setText(df.format(spent));
+        viewHolder.tvItem.setText(item);
         return convertView;
     }
 
     private static class ViewHolder {
         TextView tvDate;
-        TextView tvExpense;
-        TextView tvRemainder;
-        TextView tvBudget;
+        TextView tvSpent;
+        TextView tvItem;
     }
 }
-

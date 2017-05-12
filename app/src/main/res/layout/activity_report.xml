@@ -5,17 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#e2e4fe"
     tools:context=".ReportActivity">
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp" >
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp" >
 
         <TextView
-            android:id="@+id/tvDate"
             android:layout_height="wrap_content"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -25,7 +25,6 @@
             android:text="Date" />
 
         <TextView
-            android:id="@+id/tvBudget"
             android:layout_height="wrap_content"
             android:gravity="end"
             android:layout_width="0dp"
@@ -36,7 +35,6 @@
             android:text="Budget" />
 
         <TextView
-            android:id="@+id/tvExpense"
             android:layout_height="wrap_content"
             android:gravity="end"
             android:layout_width="0dp"
@@ -47,7 +45,6 @@
             android:text="Expense" />
 
         <TextView
-            android:id="@+id/tvRemainder"
             android:layout_height="wrap_content"
             android:gravity="end"
             android:layout_width="0dp"
@@ -58,12 +55,20 @@
             android:text="Remainder" />
 
     </LinearLayout>
-
     <ListView
         android:id="@+id/lvData"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp" />
+        android:layout_marginTop="10dp"
+        android:listSelector="@android:color/transparent"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="@null"
+        android:dividerHeight="10dp" />
+    <!--<ListView-->
+        <!--android:id="@+id/lvData"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="10dp"-->
+        <!--android:layout_marginEnd="10dp" />-->
 
 </LinearLayout>

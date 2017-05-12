@@ -18,10 +18,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar">
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAY8ZNgMUj-NDEwMq8ELOSUP-qGUmrFaac"/>
+            android:value="AIzaSyAY8ZNgMUj-NDEwMq8ELOSUP-qGUmrFaac" />
 
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -32,8 +31,10 @@
         </activity>
         <activity
             android:name=".ExpenseActivity"
-            android:label="@string/title_activity_expense"/>
-        <activity android:name=".LocationActivity" />
+            android:label="@string/title_activity_expense" />
+        <activity
+            android:name=".LocationActivity"
+            android:label="@string/title_activity_map" />
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
@@ -41,13 +42,17 @@
             android:name=".RegisterActivity"
             android:label="@string/title_activity_register" />
         <activity
-            android:name=".CalculationActivity" />
+            android:name=".CalculationActivity"
+            android:label="@string/title_activity_calculation" />
         <activity
             android:name=".ReportActivity"
-            android:label="@string/title_activity_report"/>
+            android:label="@string/title_activity_report" />
         <activity
             android:name=".StatisticActivity"
             android:label="@string/title_activity_statistic" />
+        <activity
+            android:name=".ProfileActivity"
+            android:label="@string/title_activity_profile" />
 
         <provider
             android:name=".DBContentProvider"

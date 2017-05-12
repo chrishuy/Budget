@@ -54,16 +54,16 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 0:
-                        Intent intentProfile = new Intent(MainActivity.this, ExpenseActivity.class);
-                        startActivity(intentProfile);
+                        Intent intentExpense = new Intent(MainActivity.this, ExpenseActivity.class);
+                        startActivity(intentExpense);
                         break;
                     case 1:
                         Intent intentCalculation = new Intent(MainActivity.this, CalculationActivity.class);
                         startActivity(intentCalculation);
                         break;
                     case 2:
-                        Intent intentData = new Intent(MainActivity.this, ReportActivity.class);
-                        startActivity(intentData);
+                        Intent intentReport = new Intent(MainActivity.this, ReportActivity.class);
+                        startActivity(intentReport);
                         break;
                     case 3:
                         Intent intentStat = new Intent(MainActivity.this, StatisticActivity.class);
@@ -74,6 +74,8 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intentLocator);
                         break;
                     case 5:
+                        Intent intentProfile = new Intent(MainActivity.this, ProfileActivity.class);
+                        startActivity(intentProfile);
                         break;
                     default:
                         break;

@@ -18,12 +18,15 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class ExpenseActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
     private float maxBudget, spent;
     private ProgressBar pBudget;
     private EditText eSpend;
     private TextView tProgress;
-    private BudgetUpdateTask updateTask;
+    private int currentRecord;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +50,18 @@ public class ExpenseActivity extends AppCompatActivity implements LoaderCallback
                     Toast.makeText(this, "Please enter a valid value", Toast.LENGTH_LONG).show();
                     return;
                 }
-                spent -= Float.parseFloat(eSpend.getText().toString());
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                String today = dateFormat.format(new Date());
+                float amount = Float.parseFloat(eSpend.getText().toString());
+                spent -= amount;
                 // Update the last row only with the new spent value
-                ContentValues contentValues = new ContentValues();
-                contentValues.put(DBHelper.CN_REMAINDER, spent);
-                updateTask.execute(contentValues);
+                ContentValues cvBudget = new ContentValues();
+                cvBudget.put(DBHelper.CN_REMAINDER, spent);
+                ContentValues cvExpense = new ContentValues();
+                cvExpense.put(DBHelper.CN_SPENT, amount);
+                cvExpense.put(DBHelper.CN_TODAY, today);
+                BudgetUpdateTask updateTask = new BudgetUpdateTask(currentRecord);
+                updateTask.execute(cvBudget, cvExpense);
                 updateProgressBar();
                 eSpend.setText("");
                 break;
@@ -77,8 +87,7 @@ public class ExpenseActivity extends AppCompatActivity implements LoaderCallback
         data.moveToLast();
         spent = data.getFloat(data.getColumnIndex(DBHelper.CN_REMAINDER));
         maxBudget = data.getFloat(data.getColumnIndex(DBHelper.CN_BUDGET));
-        int id = data.getInt(data.getColumnIndex(DBHelper.CN_ID));
-        updateTask = new BudgetUpdateTask(id);
+        currentRecord = data.getInt(data.getColumnIndex(DBHelper.CN_ID));
         updateProgressBar();
         Toast.makeText(this, Float.toString(spent), Toast.LENGTH_LONG).show();
     }
@@ -99,6 +108,9 @@ public class ExpenseActivity extends AppCompatActivity implements LoaderCallback
             // Setting up values of the clicked location to insert into the database
             String[] selectionArgs = new String[]{Integer.toString(index)};
             getContentResolver().update(DBContentProvider.CONTENT_URI_BUDGET, params[0], null, selectionArgs);
+            // Add value to budgetId column (foreign key)
+            params[1].put(DBHelper.CN_BUDGET_ID, index);
+            getContentResolver().insert(DBContentProvider.CONTENT_URI_EXPENSE, params[1]);
             return null;
         }
     }

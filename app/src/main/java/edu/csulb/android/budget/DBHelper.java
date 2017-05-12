@@ -18,6 +18,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "dbBudget";
     public static final String CN_ID = "id";
+    public static final String CN_BUDGET_ID = "budgetId";
     public static final String CN_INCOME = "income";
     public static final String CN_SAVING = "saving";
     public static final String CN_GROCERY = "grocery";
@@ -46,7 +47,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 + CN_TODAY + " VARCHAR(45))";
         String sql2 = "CREATE TABLE " + TABLE_EXPENSE + "("
                 + CN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + CN_BUDGET + " INTEGER, "
+                + CN_BUDGET_ID + " INTEGER, "
                 + CN_SPENT + " FLOAT, "
                 + CN_ITEM + " TEXT, "
                 + CN_TODAY + " VARCHAR(45))";
@@ -115,7 +116,7 @@ public class DBHelper extends SQLiteOpenHelper {
         if (selectionArgs == null) {
             return db.delete(TABLE_EXPENSE, null , null);
         }
-        return db.delete(TABLE_EXPENSE, "id=?" , selectionArgs);
+        return db.delete(TABLE_EXPENSE, "budgetId=?" , selectionArgs);
     }
 
     public int updateBudget(ContentValues values, String[] selectionArgs) {
@@ -124,10 +125,11 @@ public class DBHelper extends SQLiteOpenHelper {
         return db.update(TABLE_BUDGET, values, "id=?", selectionArgs);
     }
 
+    // Method not used
     public int updateExpense(ContentValues values, String[] selectionArgs) {
         SQLiteDatabase db = this.getWritable();
         if (db == null) return 0;
-        return db.update(TABLE_EXPENSE, values, "budget=?", selectionArgs);
+        return db.update(TABLE_EXPENSE, values, "budgetId=?", selectionArgs);
     }
 
     // Getting all budget
@@ -141,6 +143,6 @@ public class DBHelper extends SQLiteOpenHelper {
     public Cursor getAllExpense() {
         SQLiteDatabase db = this.getReadable();
         if (db == null) return null;
-        return db.query(TABLE_EXPENSE, new String[] {CN_ID, CN_SPENT, CN_ITEM, CN_TODAY}, null, null, null, null, null);
+        return db.query(TABLE_EXPENSE, new String[] {CN_ID, CN_BUDGET_ID, CN_SPENT, CN_ITEM, CN_TODAY}, null, null, null, null, null);
     }
 }
