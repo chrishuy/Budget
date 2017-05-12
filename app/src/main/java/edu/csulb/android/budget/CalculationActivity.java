@@ -13,7 +13,6 @@ import java.util.Date;
 
 public class CalculationActivity extends Activity {
     private EditText eIncome, eSavings, eGrocery, eBills;
-//    private TextView tBudget;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,28 +23,18 @@ public class CalculationActivity extends Activity {
         eSavings = (EditText) findViewById(R.id.eSaving);
         eGrocery = (EditText) findViewById(R.id.eGrocery);
         eBills = (EditText) findViewById(R.id.eBills);
-//        tBudget = (TextView) findViewById(R.id.tResults);
     }
 
-    //When user clicks button
+    // When user clicks button
     public void onClickCalculate(View view) {
         float income, saving, grocery, bill, budget;
-        //Outputs a toast message if any fields are empty
+        // Outputs a toast message if any fields are empty
         if((eIncome.getText().length() == 0) || (eSavings.getText().length() == 0)
                 || (eGrocery.getText().length() == 0) || (eBills.getText().length() == 0)) {
             Toast.makeText(this, "Please fill out all fields", Toast.LENGTH_LONG).show();
             return;
         }
         switch (view.getId()) {
-            case R.id.bCalculate:
-                //Take input in from edit texts
-                income = Float.parseFloat(eIncome.getText().toString());
-                saving = Float.parseFloat(eSavings.getText().toString());
-                grocery = Float.parseFloat(eGrocery.getText().toString());
-                bill = Float.parseFloat(eBills.getText().toString());
-                budget = WeeklyCalculator.weekBudget(income, bill, grocery, saving);
-                Toast.makeText(this, Float.toString(budget), Toast.LENGTH_LONG).show();
-                break;
             case R.id.btnSave:
                 income = Float.parseFloat(eIncome.getText().toString());
                 saving = Float.parseFloat(eSavings.getText().toString());
@@ -63,7 +52,6 @@ public class CalculationActivity extends Activity {
                 contentValues.put(DBHelper.CN_REMAINDER, budget);
                 contentValues.put(DBHelper.CN_BUDGET, budget);
                 contentValues.put(DBHelper.CN_TODAY, today);
-
                 // Creating an instance of LocationInsertTask
                 BudgetInsertTask insertTask = new BudgetInsertTask();
                 insertTask.execute(contentValues);

@@ -2,14 +2,12 @@ package edu.csulb.android.budget;
 
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
-public class Locations extends AppCompatActivity {
+public class LocationActivity extends AppCompatActivity {
 
     private EditText eAddress;
     Button bLocate;
@@ -18,10 +16,9 @@ public class Locations extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.locations);
+        setContentView(R.layout.activity_location);
 
         eAddress = (EditText) findViewById(R.id.etAddress);
-
 
     }
 }

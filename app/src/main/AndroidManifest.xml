@@ -18,6 +18,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAY8ZNgMUj-NDEwMq8ELOSUP-qGUmrFaac"/>
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,10 +31,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".BudgetProfile"
+            android:name=".ExpenseActivity"
             android:label="@string/title_activity_expense"/>
-        <activity android:name=".SettingsActivity" />
-        <activity android:name=".Locations" />
+        <activity android:name=".LocationActivity" />
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
@@ -39,7 +43,7 @@
         <activity
             android:name=".CalculationActivity" />
         <activity
-            android:name=".DataListingActivity"
+            android:name=".ReportActivity"
             android:label="@string/title_activity_report"/>
         <activity
             android:name=".StatisticActivity"

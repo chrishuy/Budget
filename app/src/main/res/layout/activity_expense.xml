@@ -3,7 +3,7 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <ProgressBar
-        android:id="@+id/progressBar"
+        android:id="@+id/pbProgress"
         style="@android:style/Widget.ProgressBar.Horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -13,10 +13,10 @@
         android:layout_alignParentStart="true" />
 
     <EditText
-        android:id="@+id/eSpent"
+        android:id="@+id/edtSpent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/progressBar"
+        android:layout_below="@+id/pbProgress"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:gravity="center"
@@ -25,51 +25,51 @@
         android:hint="@string/spend_input" />
 
     <Button
-        android:id="@+id/bSubmit"
+        android:id="@+id/btnSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/eSpent"
+        android:layout_below="@+id/edtSpent"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:text="@string/submit"
         android:onClick="onClick"/>
 
     <TextView
-        android:id="@+id/tProgress"
+        android:id="@+id/tvProgress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/progressBar"
+        android:layout_alignTop="@+id/pbProgress"
         android:layout_centerHorizontal="true"
         android:textColor="#fff"
         android:textSize="30dp"
-        android:layout_above="@+id/eSpent" />
+        android:layout_above="@+id/edtSpent" />
 
     <TextView
-        android:id="@+id/tWeeklyBudget"
+        android:id="@+id/tvWeeklyBudget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/tProgress"
+        android:layout_above="@+id/tvProgress"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="11dp"
         android:textColor="@color/black"
         android:text="@string/progress_message" />
 
-    <Button
-        android:id="@+id/bLocations"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/location"
-        android:layout_below="@+id/bSubmit"
-        android:onClick="onClick"
-        android:layout_alignStart="@+id/tWeeklyBudget" />
+    <!--<Button-->
+        <!--android:id="@+id/btnLocation"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/location"-->
+        <!--android:layout_below="@+id/bSubmit"-->
+        <!--android:onClick="onClick"-->
+        <!--android:layout_alignStart="@+id/tWeeklyBudget" />-->
 
-    <Button
-        android:id="@+id/bSettings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/settings"
-        android:layout_below="@+id/bLocations"
-        android:onClick="onClick"
-        android:layout_centerHorizontal="true" />
+    <!--<Button-->
+        <!--android:id="@+id/btnSetting"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/settings"-->
+        <!--android:layout_below="@+id/bLocations"-->
+        <!--android:onClick="onClick"-->
+        <!--android:layout_centerHorizontal="true" />-->
 
 </RelativeLayout>

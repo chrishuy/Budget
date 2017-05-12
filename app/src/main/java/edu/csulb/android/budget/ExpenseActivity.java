@@ -1,8 +1,6 @@
 package edu.csulb.android.budget;
 
 import android.content.ContentValues;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.database.Cursor;
 import android.graphics.Color;
@@ -13,7 +11,6 @@ import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,9 +18,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class BudgetProfile extends AppCompatActivity implements LoaderCallbacks<Cursor> {
-    private ProgressBar pBudget;
+public class ExpenseActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
     private float maxBudget, spent;
+    private ProgressBar pBudget;
     private EditText eSpend;
     private TextView tProgress;
     private BudgetUpdateTask updateTask;
@@ -31,18 +28,21 @@ public class BudgetProfile extends AppCompatActivity implements LoaderCallbacks<
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.budget_profile);
+        setContentView(R.layout.activity_expense);
         getSupportLoaderManager().initLoader(0, null, this);
 
-        eSpend = (EditText) findViewById(R.id.eSpent);
-        tProgress = (TextView) findViewById(R.id.tProgress);
-        pBudget = (ProgressBar) findViewById(R.id.progressBar);
+        Button btnSubmit = (Button)findViewById(R.id.btnSubmit);
+        btnSubmit.setShadowLayer(4,0,0, Color.BLACK);
+
+        eSpend = (EditText) findViewById(R.id.edtSpent);
+        tProgress = (TextView) findViewById(R.id.tvProgress);
+        pBudget = (ProgressBar) findViewById(R.id.pbProgress);
         pBudget.setProgressTintList(ColorStateList.valueOf(Color.DKGRAY));
     }
 
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.bSubmit:
+            case R.id.btnSubmit:
                 if (eSpend.getText().length() == 0 || Float.parseFloat(eSpend.getText().toString()) > spent) {
                     Toast.makeText(this, "Please enter a valid value", Toast.LENGTH_LONG).show();
                     return;
@@ -54,16 +54,6 @@ public class BudgetProfile extends AppCompatActivity implements LoaderCallbacks<
                 updateTask.execute(contentValues);
                 updateProgressBar();
                 eSpend.setText("");
-                break;
-            case R.id.bSettings:
-                Intent reset = new Intent(getApplicationContext(), SettingsActivity.class);
-                startActivity(reset);
-                Log.d("Settings", "Settings button pressed");
-                break;
-            case R.id.bLocations:
-                Intent locator = new Intent(getApplicationContext(), Locations.class);
-                startActivity(locator);
-                Log.d("Locations", "Locations button pressed");
                 break;
         }
     }

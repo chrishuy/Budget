@@ -1,6 +1,5 @@
 package edu.csulb.android.budget;
 
-import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -9,10 +8,8 @@ import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -20,13 +17,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class DataListingActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
+public class ReportActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
     private List<Item> items = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_data_listing);
+        setContentView(R.layout.activity_report);
         getSupportLoaderManager().initLoader(0, null, this);
     }
 
