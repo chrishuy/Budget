@@ -20,7 +20,7 @@
         android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar">
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAY8ZNgMUj-NDEwMq8ELOSUP-qGUmrFaac" />
+            android:value="AIzaSyAY8ZNgMUj" />
 
         <activity android:name=".MainActivity">
             <intent-filter>
